@@ -1,0 +1,13 @@
+const config = {
+  db: {
+    host: "",
+    port: "",
+    user: "",
+    password: "",
+    database: "",
+  },
+  sessionSecret: "",
+  listPerPage: 10,
+};
+
+module.exports = config;
