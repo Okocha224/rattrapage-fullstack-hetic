@@ -8,7 +8,7 @@ con.connect(function (err) {
     console.error("Erreur de connexion :", err.message);
     process.exit(1);
   }
-  console.log("✅ Connecté à la base !");
+  console.log("Connecté à la base");
 
   con.query(
     `CREATE TABLE IF NOT EXISTS users (
@@ -19,9 +19,9 @@ con.connect(function (err) {
     )`,
     function (err) {
       if (err) {
-        console.error("❌ Erreur table users :", err.message);
+        console.error("Erreur table users :", err.message);
       } else {
-        console.log("✅ Table 'users' prête !");
+        console.log("Table 'users' prête");
       }
       con.end();
     }

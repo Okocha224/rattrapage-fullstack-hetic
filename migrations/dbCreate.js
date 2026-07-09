@@ -13,7 +13,7 @@ con.connect(function (err) {
     console.error("Erreur de connexion :", err.message);
     process.exit(1);
   }
-  console.log("✅ Connecté au serveur MySQL !");
+  console.log("Connecté au serveur MySQL");
 
   con.query(`CREATE DATABASE IF NOT EXISTS ${config.db.database}`, function (err) {
     if (err) {
@@ -21,7 +21,7 @@ con.connect(function (err) {
       con.end();
       process.exit(1);
     }
-    console.log(`✅ Base de données '${config.db.database}' prête !`);
+    console.log(`Base de données '${config.db.database}' prête`);
     con.end();
   });
 });

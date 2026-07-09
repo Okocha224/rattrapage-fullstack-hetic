@@ -20,7 +20,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.json({ message: "🎵 API en ligne !" });
+  res.json({ message: "API en ligne" });
 });
 
 app.use((err, req, res, next) => {
@@ -29,5 +29,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
