@@ -4,15 +4,14 @@ const session = require("express-session");
 const path    = require("path");
 const config  = require("./config");
 const authRoutes = require("./routes/auth");
+const musicRoutes = require("./routes/music");
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
-const musicRoutes = require("./routes/music");
 
 app.use(cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/music", musicRoutes);
 
 app.use(session({
   secret: config.sessionSecret,
@@ -23,6 +22,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRoutes);
+app.use("/music", musicRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "API en ligne" });
