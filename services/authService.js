@@ -11,6 +11,10 @@ function signup(username, password, callback) {
     const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
     db.query(sql, [username, hashedPassword], function (err, result) {
       if (err) {
+        if (err.code === "ER_DUP_ENTRY") {
+          callback(new Error("Ce nom d'utilisateur est déjà pris"), null);
+          return;
+        }
         callback(err, null);
         return;
       }
