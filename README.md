@@ -94,6 +94,22 @@ Le serveur démarre sur `http://localhost:3000`.
 
 Ce projet utilise l'API publique de [Deezer](https://developers.deezer.com/api), qui ne nécessite aucune clé d'authentification ni inscription. Aucune configuration supplémentaire n'est donc nécessaire pour cette partie.
 
+## Choix techniques et justifications
+
+Quelques décisions prises pendant le développement méritent d'être expliquées, pour que leur raisonnement soit clair même sans échange oral.
+
+### Pourquoi Deezer plutôt que Spotify
+
+Le sujet cite Spotify en exemple, avec un appel direct pour les recommandations. Cependant, Spotify a supprimé son endpoint `/recommendations` (ainsi que plusieurs autres) en novembre 2024 pour toutes les nouvelles applications — cet appel direct n'est donc plus disponible aujourd'hui. Deezer a été choisi comme alternative : son API publique ne nécessite aucune clé ni authentification, ce qui correspond bien à l'objectif de simplicité du backend Node demandé par le sujet.
+
+### Comment le "style musical" a été interprété
+
+Le sujet demande de "demander un style de musique à l'utilisateur (sous système de tag, ex: Rock)". Cette application traduit cette exigence par un menu déroulant rempli dynamiquement avec la vraie liste de genres fournie par Deezer (Rock, Pop, Rap/Hip Hop, Jazz...) — l'utilisateur choisit un tag parmi cette liste, exactement comme l'exemple donné dans le sujet.
+
+### D'où viennent les morceaux "aléatoires"
+
+Deezer ne propose pas d'endpoint de recommandation aléatoire prêt à l'emploi. La solution mise en place : récupérer le classement des morceaux populaires du style choisi (`GET /chart/{id_du_style}/tracks`), puis sélectionner 5 morceaux au hasard dans cette liste avec une fonction écrite pour ce projet (`pickRandom`, qui mélange le tableau avec `Math.random()`). Le tirage aléatoire est donc réalisé par le backend de l'application, à partir des données fournies par l'API — ce qui répond à la demande du sujet ("API de votre choix pour récupérer aléatoirement des morceaux").
+
 ## Structure du projet
 
 ```
