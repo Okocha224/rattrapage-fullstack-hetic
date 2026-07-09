@@ -11,7 +11,8 @@ function getGenres(callback) {
       return response.json();
     })
     .then(function (data) {
-      callback(null, data.data);
+      const genres = data.data || [];
+      callback(null, genres);
     })
     .catch(function (err) {
       callback(err, null);
@@ -26,7 +27,8 @@ function getTracksByGenreId(genreId, callback) {
       return response.json();
     })
     .then(function (data) {
-      const randomTracks = pickRandom(data.data, 5);
+      const tracks = data.data || [];
+      const randomTracks = pickRandom(tracks, 5);
       callback(null, randomTracks);
     })
     .catch(function (err) {
