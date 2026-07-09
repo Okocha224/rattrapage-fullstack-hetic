@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Reco - Découverte</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="container">
+    <h1>Découvre de la musique</h1>
+
+    <section class="card">
+      <h2>Choisis un style</h2>
+      <form id="genre-form">
+        <select id="genre-select" required>
+          <option value="">Chargement des styles...</option>
+        </select>
+        <button type="submit">Découvrir</button>
+      </form>
+    </section>
+
+    <section id="tracks-section" class="tracks-grid"></section>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

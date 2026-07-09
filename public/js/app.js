@@ -50,6 +50,7 @@ loginForm.addEventListener("submit", function (event) {
       if (data.id) {
         messageEl.textContent = "Connecté en tant que " + data.username;
         messageEl.className = "success";
+        window.location.href = "dashboard.html";
       } else {
         messageEl.textContent = data.message || "Erreur lors de la connexion";
         messageEl.className = "error";
