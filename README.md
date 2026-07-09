@@ -1,4 +1,4 @@
-# OKOCHA PRODUCTION
+# OKOCHA PROD
 
 Application de recommandation musicale développée en Node.js dans le cadre du rattrapage Fullstack (HETIC, cours de Corto Dufour).
 
@@ -65,7 +65,7 @@ const config = {
 module.exports = config;
 ```
 
-Le `port` dépend de ton installation MySQL locale (souvent `8889` sur MAMP, `3306` sur une installation standard). `config.js` n'est jamais versionné sur Git (voir `.gitignore`).
+Le `port` dépend de l'installation MySQL locale : souvent `8889` sur MAMP (Mac), `3306` sur une installation MySQL standard ou WAMP/XAMPP. `config.js` n'est jamais versionné sur Git (voir `.gitignore`) ; `config.js.ext` sert de modèle pour recréer ce fichier.
 
 4. Créer la base de données et les tables (migrations)
 
@@ -86,7 +86,7 @@ Le serveur démarre sur `http://localhost:3000`.
 
 1. Aller sur `http://localhost:3000`
 2. Créer un compte, puis se connecter
-3. Une fois connecté, tu es redirigé vers la page de découverte musicale
+3. Une fois connecté, redirection automatique vers la page de découverte musicale
 4. Choisir un style dans le menu déroulant, cliquer sur "Découvrir"
 5. 5 morceaux aléatoires correspondant à ce style s'affichent, avec pochette, titre, artiste et un extrait audio quand il est disponible
 
@@ -109,6 +109,10 @@ Le sujet demande de "demander un style de musique à l'utilisateur (sous systèm
 ### D'où viennent les morceaux "aléatoires"
 
 Deezer ne propose pas d'endpoint de recommandation aléatoire prêt à l'emploi. La solution mise en place : récupérer le classement des morceaux populaires du style choisi (`GET /chart/{id_du_style}/tracks`), puis sélectionner 5 morceaux au hasard dans cette liste avec une fonction écrite pour ce projet (`pickRandom`, qui mélange le tableau avec `Math.random()`). Le tirage aléatoire est donc réalisé par le backend de l'application, à partir des données fournies par l'API — ce qui répond à la demande du sujet ("API de votre choix pour récupérer aléatoirement des morceaux").
+
+### Sur l'organisation Git
+
+Ce projet étant réalisé en solo (pas de collaborateur à coordonner), l'ensemble du développement a été fait directement sur la branche `main`, avec un commit atomique et descriptif à chaque fonctionnalité terminée et testée (voir l'historique des commits), plutôt qu'avec des branches par feature — une simplification volontaire.
 
 ## Structure du projet
 
@@ -139,7 +143,7 @@ rattrapage-fullstack/
 ## Sécurité
 
 - Mots de passe hachés avec bcrypt, jamais stockés en clair
-- Authentification par session (cookie signé côté serveur)
+- Authentification par session (cookie signé côté serveur), routes musicales protégées derrière la connexion
 - Requêtes SQL paramétrées (protection contre l'injection SQL)
 - `config.js` exclu du dépôt Git via `.gitignore`
 
