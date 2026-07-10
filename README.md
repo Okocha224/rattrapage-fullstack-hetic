@@ -147,3 +147,9 @@ rattrapage-fullstack/
 - Requêtes SQL paramétrées (protection contre l'injection SQL)
 - `config.js` exclu du dépôt Git via `.gitignore`
 
+## Preuve du fonctionnement du backend
+
+La capture ci-dessous montre les logs du serveur pendant une utilisation réelle de l'application : l'appel à l'API Deezer, le nombre de styles et de morceaux reçus, et la sélection aléatoire de 5 morceaux effectuée côté backend.
+
+![Logs du backend montrant la récupération et le traitement des données Deezer](screenshots/backend-logs.png)
+
